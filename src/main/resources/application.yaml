@@ -1,14 +1,17 @@
 server:
-  port: 8081
+  port: ${SERVER_PORT:8081}
 
 spring:
   application:
     name: Kafka
 
   kafka:
-    bootstrap-servers: localhost:9095
+    bootstrap-servers:
+      - localhost:9095
+      - localhost:9096
+      - localhost:9097
     consumer:
-      group-id: group-1
+      group-id: ${GROUP_ID:group-1}
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
